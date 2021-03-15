@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\codeboxx\\week8\\RocketElevatorsRESTAPI\\RocketElevatorsRESTAPI.csproj": {}
+    "C:\\codeboxx\\week8\\REST-API\\Rocket-Elevators-Rest-API\\RocketElevatorsRESTAPI.csproj": {}
   },
   "projects": {
-    "C:\\codeboxx\\week8\\RocketElevatorsRESTAPI\\RocketElevatorsRESTAPI.csproj": {
+    "C:\\codeboxx\\week8\\REST-API\\Rocket-Elevators-Rest-API\\RocketElevatorsRESTAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\codeboxx\\week8\\RocketElevatorsRESTAPI\\RocketElevatorsRESTAPI.csproj",
+        "projectUniqueName": "C:\\codeboxx\\week8\\REST-API\\Rocket-Elevators-Rest-API\\RocketElevatorsRESTAPI.csproj",
         "projectName": "RocketElevatorsRESTAPI",
-        "projectPath": "C:\\codeboxx\\week8\\RocketElevatorsRESTAPI\\RocketElevatorsRESTAPI.csproj",
+        "projectPath": "C:\\codeboxx\\week8\\REST-API\\Rocket-Elevators-Rest-API\\RocketElevatorsRESTAPI.csproj",
         "packagesPath": "C:\\Users\\Kaelan\\.nuget\\packages\\",
-        "outputPath": "C:\\codeboxx\\week8\\RocketElevatorsRESTAPI\\obj\\",
+        "outputPath": "C:\\codeboxx\\week8\\REST-API\\Rocket-Elevators-Rest-API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Kaelan\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -35,6 +35,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[*, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
