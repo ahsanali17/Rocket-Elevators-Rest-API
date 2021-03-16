@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\codeboxx\\week8\\REST-API\\Rocket-Elevators-Rest-API\\RestAPI.csproj": {}
+    "C:\\codeboxx\\week8\\REST-API\\RestAPI\\RestAPI.csproj": {}
   },
   "projects": {
-    "C:\\codeboxx\\week8\\REST-API\\Rocket-Elevators-Rest-API\\RestAPI.csproj": {
+    "C:\\codeboxx\\week8\\REST-API\\RestAPI\\RestAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\codeboxx\\week8\\REST-API\\Rocket-Elevators-Rest-API\\RestAPI.csproj",
+        "projectUniqueName": "C:\\codeboxx\\week8\\REST-API\\RestAPI\\RestAPI.csproj",
         "projectName": "RestAPI",
-        "projectPath": "C:\\codeboxx\\week8\\REST-API\\Rocket-Elevators-Rest-API\\RestAPI.csproj",
+        "projectPath": "C:\\codeboxx\\week8\\REST-API\\RestAPI\\RestAPI.csproj",
         "packagesPath": "C:\\Users\\Kaelan\\.nuget\\packages\\",
-        "outputPath": "C:\\codeboxx\\week8\\REST-API\\Rocket-Elevators-Rest-API\\obj\\",
+        "outputPath": "C:\\codeboxx\\week8\\REST-API\\RestAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Kaelan\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,9 +38,17 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.InMemory": {
+            "Microsoft.EntityFrameworkCore.Design": {
               "target": "Package",
-              "version": "[5.0.4, )"
+              "version": "[3.1.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[3.1.13, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
