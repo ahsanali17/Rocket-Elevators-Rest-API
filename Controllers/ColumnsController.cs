@@ -24,14 +24,14 @@ namespace RestAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Column>>> GetColumns()
         {
-            return await _context.Columns.ToListAsync();
+            return await _context.columns.ToListAsync();
         }
 
         // GET: api/Columns/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Column>> GetColumn(long id)
         {
-            var column = await _context.Columns.FindAsync(id);
+            var column = await _context.columns.FindAsync(id);
 
             if (column == null)
             {
@@ -77,7 +77,7 @@ namespace RestAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Column>> PostColumn(Column column)
         {
-            _context.Columns.Add(column);
+            _context.columns.Add(column);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetColumn", new { id = column.id }, column);
@@ -87,13 +87,13 @@ namespace RestAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteColumn(long id)
         {
-            var column = await _context.Columns.FindAsync(id);
+            var column = await _context.columns.FindAsync(id);
             if (column == null)
             {
                 return NotFound();
             }
 
-            _context.Columns.Remove(column);
+            _context.columns.Remove(column);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace RestAPI.Controllers
 
         private bool ColumnExists(long id)
         {
-            return _context.Columns.Any(e => e.id == id);
+            return _context.columns.Any(e => e.id == id);
         }
     }
 }

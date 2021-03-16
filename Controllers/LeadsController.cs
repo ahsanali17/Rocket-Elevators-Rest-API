@@ -24,14 +24,14 @@ namespace RestAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Lead>>> GetLeads()
         {
-            return await _context.Leads.ToListAsync();
+            return await _context.leads.ToListAsync();
         }
 
         // GET: api/Leads/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Lead>> GetLead(long id)
         {
-            var lead = await _context.Leads.FindAsync(id);
+            var lead = await _context.leads.FindAsync(id);
 
             if (lead == null)
             {
@@ -77,7 +77,7 @@ namespace RestAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Lead>> PostLead(Lead lead)
         {
-            _context.Leads.Add(lead);
+            _context.leads.Add(lead);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetLead", new { id = lead.id }, lead);
@@ -87,13 +87,13 @@ namespace RestAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLead(long id)
         {
-            var lead = await _context.Leads.FindAsync(id);
+            var lead = await _context.leads.FindAsync(id);
             if (lead == null)
             {
                 return NotFound();
             }
 
-            _context.Leads.Remove(lead);
+            _context.leads.Remove(lead);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace RestAPI.Controllers
 
         private bool LeadExists(long id)
         {
-            return _context.Leads.Any(e => e.id == id);
+            return _context.leads.Any(e => e.id == id);
         }
     }
 }

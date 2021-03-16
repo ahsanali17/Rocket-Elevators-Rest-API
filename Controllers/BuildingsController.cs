@@ -24,14 +24,14 @@ namespace RestAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Building>>> GetBuildings()
         {
-            return await _context.Buildings.ToListAsync();
+            return await _context.buildings.ToListAsync();
         }
 
         // GET: api/Buildings/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Building>> GetBuilding(long id)
         {
-            var building = await _context.Buildings.FindAsync(id);
+            var building = await _context.buildings.FindAsync(id);
 
             if (building == null)
             {
@@ -77,7 +77,7 @@ namespace RestAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Building>> PostBuilding(Building building)
         {
-            _context.Buildings.Add(building);
+            _context.buildings.Add(building);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetBuilding", new { id = building.id }, building);
@@ -87,13 +87,13 @@ namespace RestAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBuilding(long id)
         {
-            var building = await _context.Buildings.FindAsync(id);
+            var building = await _context.buildings.FindAsync(id);
             if (building == null)
             {
                 return NotFound();
             }
 
-            _context.Buildings.Remove(building);
+            _context.buildings.Remove(building);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace RestAPI.Controllers
 
         private bool BuildingExists(long id)
         {
-            return _context.Buildings.Any(e => e.id == id);
+            return _context.buildings.Any(e => e.id == id);
         }
     }
 }
