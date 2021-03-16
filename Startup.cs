@@ -33,9 +33,21 @@ namespace RestAPI
             services.AddCors();
 
             services.AddDbContext<RestAPIContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseMySql(
+
+                    "server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;database=KaelenBurroughs;uid=codeboxx;password=Codeboxx1!",
+
+                    new MySqlServerVersion(new Version(8, 0, 21)),
+                        mySqlOptions => mySqlOptions
+                            .CharSetBehavior(CharSetBehavior.NeverAppend))
+                    // Everything from this point on is optional but helps with debugging.
+                    // .EnableSensitiveDataLogging()
+                    // .EnableDetailedErrors();
+                    );
 
             services.AddMvc();
+
+            // "server=localhost;database=myapp_development;uid=root;password=Pa$$w0rd!",
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

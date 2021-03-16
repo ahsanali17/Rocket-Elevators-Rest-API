@@ -24,14 +24,14 @@ namespace RestAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Battery>>> GetBatteries()
         {
-            return await _context.Batteries.ToListAsync();
+            return await _context.batteries.ToListAsync();
         }
 
         // GET: api/Batteries/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Battery>> GetBattery(long id)
         {
-            var battery = await _context.Batteries.FindAsync(id);
+            var battery = await _context.batteries.FindAsync(id);
 
             if (battery == null)
             {
@@ -77,7 +77,7 @@ namespace RestAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Battery>> PostBattery(Battery battery)
         {
-            _context.Batteries.Add(battery);
+            _context.batteries.Add(battery);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetBattery", new { id = battery.id }, battery);
@@ -87,13 +87,13 @@ namespace RestAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBattery(long id)
         {
-            var battery = await _context.Batteries.FindAsync(id);
+            var battery = await _context.batteries.FindAsync(id);
             if (battery == null)
             {
                 return NotFound();
             }
 
-            _context.Batteries.Remove(battery);
+            _context.batteries.Remove(battery);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace RestAPI.Controllers
 
         private bool BatteryExists(long id)
         {
-            return _context.Batteries.Any(e => e.id == id);
+            return _context.batteries.Any(e => e.id == id);
         }
     }
 }

@@ -24,14 +24,14 @@ namespace RestAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Elevator>>> GetElevators()
         {
-            return await _context.Elevators.ToListAsync();
+            return await _context.elevators.ToListAsync();
         }
 
         // GET: api/Elevators/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Elevator>> GetElevator(long id)
         {
-            var elevator = await _context.Elevators.FindAsync(id);
+            var elevator = await _context.elevators.FindAsync(id);
 
             if (elevator == null)
             {
@@ -77,7 +77,7 @@ namespace RestAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Elevator>> PostElevator(Elevator elevator)
         {
-            _context.Elevators.Add(elevator);
+            _context.elevators.Add(elevator);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetElevator", new { id = elevator.id }, elevator);
@@ -87,13 +87,13 @@ namespace RestAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteElevator(long id)
         {
-            var elevator = await _context.Elevators.FindAsync(id);
+            var elevator = await _context.elevators.FindAsync(id);
             if (elevator == null)
             {
                 return NotFound();
             }
 
-            _context.Elevators.Remove(elevator);
+            _context.elevators.Remove(elevator);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace RestAPI.Controllers
 
         private bool ElevatorExists(long id)
         {
-            return _context.Elevators.Any(e => e.id == id);
+            return _context.elevators.Any(e => e.id == id);
         }
     }
 }

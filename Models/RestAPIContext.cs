@@ -9,10 +9,10 @@ namespace RestAPI.Models
         {
         }
 
-        public DbSet<Building> Buildings { get; set; }
-        public DbSet<Battery> Batteries { get; set; }
-        public DbSet<Column> Columns { get; set; }
-        public DbSet<Elevator> Elevators { get; set; }
-        public DbSet<Lead> Leads { get; set; }
+        public DbSet<Building> buildings { get; set; }
+        public DbSet<Battery> batteries { get; set; }
+        public DbSet<Column> columns { get; set; }
+        public DbSet<Elevator> elevators { get; set; }
+        public DbSet<Lead> leads { get; set; }
     }
 }
