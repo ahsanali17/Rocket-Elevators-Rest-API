@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI\\RestAPI.csproj": {}
+    "c:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI.csproj": {}
   },
   "projects": {
-    "c:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI\\RestAPI.csproj": {
+    "c:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI\\RestAPI.csproj",
+        "projectUniqueName": "c:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI.csproj",
         "projectName": "RestAPI",
-        "projectPath": "c:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI\\RestAPI.csproj",
+        "projectPath": "c:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI.csproj",
         "packagesPath": "C:\\Users\\criss\\.nuget\\packages\\",
-        "outputPath": "c:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI\\obj\\",
+        "outputPath": "c:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\criss\\AppData\\Roaming\\NuGet\\NuGet.Config"
