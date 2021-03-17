@@ -35,7 +35,13 @@ namespace RestAPI
             services.AddDbContext<RestAPIContext>(options =>
                 options.UseMySql(
 
+                    // Kaelen Connection
                     "server=localhost;database=myapp_development;uid=root;password=Pa$$w0rd!",
+
+                    // Cristiane Connection
+                    // "server=localhost;port=3306;database=RailsApp_development;uid=codeboxx;password=Codeboxx1*",
+
+                    // Live Site Connection
                     // "server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;database=KaelenBurroughs;uid=codeboxx;password=Codeboxx1!",
 
                     new MySqlServerVersion(new Version(8, 0, 21)),
