@@ -28,8 +28,24 @@ namespace RestAPI.Controllers
         }
 
         // GET: api/Columns/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Column>> GetColumn(long id)
+        // [HttpGet("{id}")]
+        // public async Task<ActionResult<Column>> GetColumn(long id)
+        // {
+        //     var column = await _context.columns.FindAsync(id);
+
+        //     if (column == null)
+        //     {
+        //         return NotFound();
+        //     }
+
+        //     return column;
+        // }
+
+//----------------------------------- Retrieving the current status of a specific Column -----------------------------------\\
+        
+        // GET: api/Columns/id/Status
+        [HttpGet("{id}/Status")]
+        public async Task<ActionResult<Column>> GetColumnStatus([FromRoute] long id)
         {
             var column = await _context.columns.FindAsync(id);
 
@@ -38,66 +54,72 @@ namespace RestAPI.Controllers
                 return NotFound();
             }
 
-            return column;
+            return Content("The status of column " + column.id + " is: " + column.status);
         }
 
-        // PUT: api/Columns/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutColumn(long id, Column column)
+
+//----------------------------------- Changing the status of a specific Column -----------------------------------\\
+        
+        // PUT: api/Columns/id/Status        
+        [HttpPut("{id}/Status")]
+        public async Task<IActionResult> PutColumn([FromRoute] long id, Column column)
         {
             if (id != column.id)
             {
                 return BadRequest();
             }
-
-            _context.Entry(column).State = EntityState.Modified;
-
-            try
+            
+            if (column.status == "Active" || column.status == "Inactive" || column.status == "Intervention")
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ColumnExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+                _context.Entry(column).State = EntityState.Modified;
 
-            return NoContent();
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    return Content("Column: " + column.id + ", status as been change to: " + column.status);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ColumnExists(id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            return Content("Valid status: Intervention, Inactive, Active. Try again!  ");
         }
 
+        
         // POST: api/Columns
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Column>> PostColumn(Column column)
-        {
-            _context.columns.Add(column);
-            await _context.SaveChangesAsync();
+        // [HttpPost]
+        // public async Task<ActionResult<Column>> PostColumn(Column column)
+        // {
+        //     _context.columns.Add(column);
+        //     await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetColumn", new { id = column.id }, column);
-        }
+        //     return CreatedAtAction("GetColumn", new { id = column.id }, column);
+        // }
 
         // DELETE: api/Columns/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteColumn(long id)
-        {
-            var column = await _context.columns.FindAsync(id);
-            if (column == null)
-            {
-                return NotFound();
-            }
+        // [HttpDelete("{id}")]
+        // public async Task<IActionResult> DeleteColumn(long id)
+        // {
+        //     var column = await _context.columns.FindAsync(id);
+        //     if (column == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            _context.columns.Remove(column);
-            await _context.SaveChangesAsync();
+        //     _context.columns.Remove(column);
+        //     await _context.SaveChangesAsync();
 
-            return NoContent();
-        }
+        //     return NoContent();
+        // }
 
         private bool ColumnExists(long id)
         {
