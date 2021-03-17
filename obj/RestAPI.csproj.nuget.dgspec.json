@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI.csproj": {}
+    "C:\\codeboxx\\week8\\REST-API\\RestAPI\\RestAPI.csproj": {}
   },
   "projects": {
-    "C:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI.csproj": {
+    "C:\\codeboxx\\week8\\REST-API\\RestAPI\\RestAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI.csproj",
+        "projectUniqueName": "C:\\codeboxx\\week8\\REST-API\\RestAPI\\RestAPI.csproj",
         "projectName": "RestAPI",
-        "projectPath": "C:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\RestAPI.csproj",
-        "packagesPath": "C:\\Users\\criss\\.nuget\\packages\\",
-        "outputPath": "C:\\Odyssey\\Week8\\Rocket-Elevators-Rest-API\\obj\\",
+        "projectPath": "C:\\codeboxx\\week8\\REST-API\\RestAPI\\RestAPI.csproj",
+        "packagesPath": "C:\\Users\\Kaelan\\.nuget\\packages\\",
+        "outputPath": "C:\\codeboxx\\week8\\REST-API\\RestAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\criss\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Kaelan\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
