@@ -20,8 +20,6 @@ namespace RestAPI.Controllers
             _context = context;
         }
 
-        // DateTime today = DateTime.Today;
-        // DateTime DaysAgo = DateTime.Today.AddDays(-30);
         // GET: api/Leads
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Lead>>> GetLeads()
@@ -30,21 +28,13 @@ namespace RestAPI.Controllers
         }
 
         
-        // GET: api/Leads/5
+        // GET: api/Leads/30days
         [HttpGet("30days")]
-        public async Task<ActionResult<IEnumerable<Lead>>> GetLead()
+        public async Task<ActionResult<List<Lead>>> GetLead()
         {
-            // var lead = await _context.leads.Where(leads => leads.created_at >= DaysAgo).ToListAsync();
-
-            // if (lead == null)
-            // {
-            //     return NotFound();
-            // }
-
-            return await _context.leads.Where(leads => leads.created_at >= DateTime.Today.AddDays(-30)).ToListAsync();
-            // return lead;
+            var allLeads = await _context.leads.Where(l => l.customer_id == null).ToListAsync();
+            var newLeads = allLeads.Where(e => e.created_at >= DateTime.Today.AddDays(-30)).ToList();
+            return newLeads;
         }
-
-        
     }
 }
