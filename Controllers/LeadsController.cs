@@ -27,81 +27,14 @@ namespace RestAPI.Controllers
             return await _context.leads.ToListAsync();
         }
 
-        // GET: api/Leads/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Lead>> GetLead(long id)
+        
+        // GET: api/Leads/30days
+        [HttpGet("30days")]
+        public async Task<ActionResult<List<Lead>>> GetLead()
         {
-            var lead = await _context.leads.FindAsync(id);
-
-            if (lead == null)
-            {
-                return NotFound();
-            }
-
-            return lead;
-        }
-
-        // PUT: api/Leads/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutLead(long id, Lead lead)
-        {
-            if (id != lead.id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(lead).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LeadExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Leads
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Lead>> PostLead(Lead lead)
-        {
-            _context.leads.Add(lead);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetLead", new { id = lead.id }, lead);
-        }
-
-        // DELETE: api/Leads/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLead(long id)
-        {
-            var lead = await _context.leads.FindAsync(id);
-            if (lead == null)
-            {
-                return NotFound();
-            }
-
-            _context.leads.Remove(lead);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool LeadExists(long id)
-        {
-            return _context.leads.Any(e => e.id == id);
+            var allLeads = await _context.leads.Where(l => l.customer_id == null).ToListAsync();
+            var newLeads = allLeads.Where(e => e.created_at >= DateTime.Today.AddDays(-30)).ToList();
+            return newLeads;
         }
     }
 }
