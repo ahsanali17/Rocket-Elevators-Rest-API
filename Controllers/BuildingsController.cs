@@ -18,16 +18,11 @@ namespace RestAPI.Controllers
         public BuildingsController(RestAPIContext context)
         {
             _context = context;
-        }
+        }        
 
-        // GET: api/Buildings
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Building>>> GetBuildings()
-        {
-            return await _context.buildings.ToListAsync();
-        }
+//----------------------------------- Retrieving all information from a specific Building -----------------------------------\\
 
-        // GET: api/Buildings/5
+        // GET: api/Buildings/id
         [HttpGet("{id}")]
         public async Task<ActionResult<Building>> GetBuilding(long id)
         {
@@ -41,63 +36,22 @@ namespace RestAPI.Controllers
             return building;
         }
 
-        // PUT: api/Buildings/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutBuilding(long id, Building building)
+//--------- Retrieving a list of Buildings that contain at least one battery, column or elevator requiring intervention ---------\\
+
+        // GET: api/Buildings/InterventionList
+        [HttpGet("InterventionList")]
+        public ActionResult<List<Building>> GetToFixBuildings()
         {
-            if (id != building.id)
-            {
-                return BadRequest();
-            }
+            IQueryable<Building> InterventionList = from BuildingsList in _context.buildings
+            join batteries in _context.batteries on BuildingsList.id equals batteries.building_id
+            join columns in _context.columns on batteries.id equals columns.battery_id
+            join elevators in _context.elevators on columns.id equals elevators.column_id
+            where (batteries.status == "Intervention") || (columns.status == "Intervention") || (elevators.status == "Intervention")
+            select BuildingsList;
 
-            _context.Entry(building).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BuildingExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return InterventionList.Distinct().ToList();
         }
 
-        // POST: api/Buildings
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Building>> PostBuilding(Building building)
-        {
-            _context.buildings.Add(building);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetBuilding", new { id = building.id }, building);
-        }
-
-        // DELETE: api/Buildings/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBuilding(long id)
-        {
-            var building = await _context.buildings.FindAsync(id);
-            if (building == null)
-            {
-                return NotFound();
-            }
-
-            _context.buildings.Remove(building);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
 
         private bool BuildingExists(long id)
         {
