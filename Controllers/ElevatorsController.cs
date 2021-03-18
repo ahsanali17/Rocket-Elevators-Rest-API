@@ -22,28 +22,31 @@ namespace RestAPI.Controllers
 
 //------------------- Retrieving a list of Elevators that are not in operation at the time of the request -------------------\\
 
-        // GET: api/Elevators
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Elevator>>> GetElevators()
+        // GET: api/Elevators/NotActive
+        [HttpGet("NotActive")]
+        public object GetElevators()
         {
-            return await _context.elevators.Where(elevator => elevator.status != "Active").ToListAsync();
+            return _context.elevators
+                        .Where(elevator => elevator.status != "Active")
+                        .Select(elevator => new {elevator.id, elevator.serial_number, elevator.status});
+            
         }
 
+//----------------------------------- Retrieving all information from a specific Elevator -----------------------------------\\
 
+        //GET: api/Elevators/id
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Elevator>> GetElevator(long id)
+        {
+            var elevator = await _context.elevators.FindAsync(id);
 
-        // GET: api/Elevators/5
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<Elevator>> GetElevator(long id)
-        // {
-        //     var elevator = await _context.elevators.FindAsync(id);
+            if (elevator == null)
+            {
+                return NotFound();
+            }
 
-        //     if (elevator == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     return elevator;
-        // }
+            return elevator;
+        }
 
 //----------------------------------- Retrieving the current status of a specific Elevator -----------------------------------\\
 
@@ -74,7 +77,8 @@ namespace RestAPI.Controllers
             
             if (elevator.status == "Active" || elevator.status == "Inactive" || elevator.status == "Intervention")
             {
-                _context.Entry(elevator).State = EntityState.Modified;
+                Elevator elevatorFound = await _context.elevators.FindAsync(id);
+                elevatorFound.status = elevator.status;
 
                 try
                 {
@@ -94,35 +98,9 @@ namespace RestAPI.Controllers
                 }
             }
             return Content("Valid status: Intervention, Inactive, Active. Try again!  ");
-        }
+        }        
 
-        // POST: api/Elevators
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        // [HttpPost]
-        // public async Task<ActionResult<Elevator>> PostElevator(Elevator elevator)
-        // {
-        //     _context.elevators.Add(elevator);
-        //     await _context.SaveChangesAsync();
-
-        //     return CreatedAtAction("GetElevator", new { id = elevator.id }, elevator);
-        // }
-
-        // DELETE: api/Elevators/5
-        // [HttpDelete("{id}")]
-        // public async Task<IActionResult> DeleteElevator(long id)
-        // {
-        //     var elevator = await _context.elevators.FindAsync(id);
-        //     if (elevator == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     _context.elevators.Remove(elevator);
-        //     await _context.SaveChangesAsync();
-
-        //     return NoContent();
-        // }
-
+        
         private bool ElevatorExists(long id)
         {
             return _context.elevators.Any(e => e.id == id);

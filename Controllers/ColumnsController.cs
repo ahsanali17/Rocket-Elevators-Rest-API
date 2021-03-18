@@ -20,26 +20,23 @@ namespace RestAPI.Controllers
             _context = context;
         }
 
-        // GET: api/Columns
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Column>>> GetColumns()
+
+
+//----------------------------------- Retrieving all information from a specific Column -----------------------------------\\
+        
+        //GET: api/Columns/id
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Column>> GetColumn(long id)
         {
-            return await _context.columns.ToListAsync();
+            var column = await _context.columns.FindAsync(id);
+
+            if (column == null)
+            {
+                return NotFound();
+            }
+
+            return column;
         }
-
-        // GET: api/Columns/5
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<Column>> GetColumn(long id)
-        // {
-        //     var column = await _context.columns.FindAsync(id);
-
-        //     if (column == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     return column;
-        // }
 
 //----------------------------------- Retrieving the current status of a specific Column -----------------------------------\\
         
@@ -71,7 +68,8 @@ namespace RestAPI.Controllers
             
             if (column.status == "Active" || column.status == "Inactive" || column.status == "Intervention")
             {
-                _context.Entry(column).State = EntityState.Modified;
+                Column columnFound = await _context.columns.FindAsync(id);
+                columnFound.status = column.status;
 
                 try
                 {
@@ -93,33 +91,6 @@ namespace RestAPI.Controllers
             return Content("Valid status: Intervention, Inactive, Active. Try again!  ");
         }
 
-        
-        // POST: api/Columns
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        // [HttpPost]
-        // public async Task<ActionResult<Column>> PostColumn(Column column)
-        // {
-        //     _context.columns.Add(column);
-        //     await _context.SaveChangesAsync();
-
-        //     return CreatedAtAction("GetColumn", new { id = column.id }, column);
-        // }
-
-        // DELETE: api/Columns/5
-        // [HttpDelete("{id}")]
-        // public async Task<IActionResult> DeleteColumn(long id)
-        // {
-        //     var column = await _context.columns.FindAsync(id);
-        //     if (column == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     _context.columns.Remove(column);
-        //     await _context.SaveChangesAsync();
-
-        //     return NoContent();
-        // }
 
         private bool ColumnExists(long id)
         {
