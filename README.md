@@ -6,6 +6,8 @@ The queries for the REST API are found in a public PostMan workspace at: https:/
 
 The REST API URL is: https://week-8-restapi-apibehavioroptions-kaelenburroughs.azurewebsites.net/
 
+To log into the account asociated with the Azure service, the account email is burroughsdevtest@gmail.com, and the password is Codeboxx1! .
+
 Each request works as follows:
 
 1. GET Batteries - Returns the information for a specific battery, and different batteries can be returned by changing the number at the end of the API request.
