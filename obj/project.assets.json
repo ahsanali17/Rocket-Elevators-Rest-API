@@ -7368,24 +7368,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kaelan\\.nuget\\packages\\": {}
+    "C:\\Users\\Ahsan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\codeboxx\\week8\\REST-API\\RestAPI\\RestAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Ahsan\\Rocket-Elevators-Rest-API\\RestAPI.csproj",
       "projectName": "RestAPI",
-      "projectPath": "C:\\codeboxx\\week8\\REST-API\\RestAPI\\RestAPI.csproj",
-      "packagesPath": "C:\\Users\\Kaelan\\.nuget\\packages\\",
-      "outputPath": "C:\\codeboxx\\week8\\REST-API\\RestAPI\\obj\\",
+      "projectPath": "C:\\Users\\Ahsan\\Rocket-Elevators-Rest-API\\RestAPI.csproj",
+      "packagesPath": "C:\\Users\\Ahsan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ahsan\\Rocket-Elevators-Rest-API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Kaelan\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Ahsan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
