@@ -52,5 +52,5 @@ jobs:
       with:
         app-name: 'rocket-api-boom'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_fcc8f82eb124445abd96579a71e6d6dd }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_3da862c7ba504d94b2a20bec4cc2bc22 }}
         package: .
