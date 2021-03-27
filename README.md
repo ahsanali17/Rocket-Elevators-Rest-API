@@ -6,7 +6,7 @@ The queries for the REST API are found in a public PostMan workspace at: https:/
 
 The REST API URL is: https://rest-api-foundation.herokuapp.com/
 
-To log into the account asociated with the Azure service, the account email is burroughsdevtest@gmail.com, and the password is Codeboxx1! .
+To log into the account asociated with the Azure service, the account email is {NIL}, and the password is {NIL} .
 
 Each request works as follows:
 
