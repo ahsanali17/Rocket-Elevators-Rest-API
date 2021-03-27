@@ -1,10 +1,14 @@
 # Rocket-Elevators-Rest-API
 
-This repo serves as the Rocket Elevators REST API developed for CodeBoxx's week 8 of the Odyssey program. We were tasked with developing a REST API to interact with the MYSQL database that already exists, and provide the appropriate requests for queries.
+This repo serves as the Rocket Elevators REST API developed for CodeBoxx's week 9 of the Odyssey program. We were tasked with developing a REST API to interact with the MYSQL database that already exists, and provide the appropriate requests for queries.
 
 The queries for the REST API are found in a public PostMan workspace at: https://app.getpostman.com/join-team?invite_code=5d0b4faee94fb95dd13ea6256cd9fe19
 
-The REST API URL is: https://rest-api-foundation.herokuapp.com/
+A working example of the the REST API URL is: https://rocket-api-boom.azurewebsites.net//api/interventions/pending
+
+
+
+
 
 To log into the account asociated with the Azure service, the account email is {NIL}, and the password is {NIL} .
 
