@@ -46,7 +46,7 @@ namespace RestAPI
                     // Cristiane Connection
                     // "server=localhost;port=3306;database=myapp_development;uid=codeboxx;password=Codeboxx1*",
                     // Live Site Connection
-                    "server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;user=codeboxx;password=Codeboxx1!;port=3306;database=AhsanAliSyed;",
+                    "server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;user=codeboxx;password=Codeboxx1!;port=3306;database=AhsanAliSyed;sslmode=none;",
 
                     new MySqlServerVersion(new Version(8, 0, 21)),
                         mySqlOptions => mySqlOptions
