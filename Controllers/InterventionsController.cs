@@ -62,7 +62,7 @@ namespace RestAPI.Controllers
 
         // PUT: api/Interventions/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}/inprogress")]
+        [HttpPut("{id}/Inprogress")]
         public async Task<IActionResult> PutIntervention(long id, Intervention intervention)
         {
             if (id != intervention.id)
