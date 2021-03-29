@@ -1,9 +1,8 @@
 # Rocket-Elevators-Rest-API
 
-This repo serves as the Rocket Elevators REST API developed for CodeBoxx's week 9 of the Odyssey program. Last week we were tasked with developing a REST API to interact with the MYSQL database that already exists, and provide the appropriate requests for queries. This week we need to add additonal functionality to our RestAPI to develop our informations system further through the use of 
+This repo serves as the Rocket Elevators REST API developed for CodeBoxx's week 9 of the Odyssey program. Last week we were tasked with developing a REST API to interact with the MYSQL database that already exists, and provide the appropriate requests for queries. This week we need to add additonal functionality to our RestAPI to develop our informations system further through the use of PUT & GET requests that change the statuses' for our Interventions through the use of a program called Postman
 
 The queries for the REST API are found in a public PostMan workspace at: https://app.getpostman.com/join-team?invite_code=5d0b4faee94fb95dd13ea6256cd9fe19
-
 A working example of the the REST API URL is: https://rocket-api-boom.azurewebsites.net//api/interventions/pending , or you can join the postman link above and get the links.
 
 You will have to test the PUT request yourself to check that a 'pending' intervention can be changed to 'In-progress' and eventually 'Completed'. More about that below.
