@@ -27,8 +27,8 @@ namespace RestAPI.Controllers
         public object GetElevators()
         {
             return _context.elevators
-                        .Where(elevator => elevator.status != "Active")
-                        .Select(elevator => new {elevator.id, elevator.serial_number, elevator.status});
+                .Where(elevator => elevator.status != "Active")
+                .Select(elevator => new {elevator.id, elevator.serial_number, elevator.status});
             
         }
 
