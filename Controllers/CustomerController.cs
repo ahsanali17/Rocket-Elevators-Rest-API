@@ -28,8 +28,8 @@ namespace RestAPI.Controllers
         {
             return await _context.customers.ToListAsync();
         }
-
-        //----------------------------------- Retrieving ID from a specific Customer -----------------------------------\\
+        
+        //-----------------------------------  -----------------------------------\\
 
         // GET: api/Customer/id
         [HttpGet("{id}")]
@@ -45,7 +45,15 @@ namespace RestAPI.Controllers
             return customers;
         }
         
-         //----------------------------------- Matching Users portal-email with Mysql-email -----------------------------------\\
+        //----------------------------------- Matching Users portal-email with Mysql-email -----------------------------------\\
+
+        // GET: api/Customers
+        [HttpGet("customer")]
+        public async Task<ActionResult<IEnumerable<Customer>>> CheckCustomers(string email)
+        {
+           var customers = await _context.customers.Where(customer => customer.email_of_company_contact == email).ToListAsync();
+            return customers;
+        }
 
         // We will add the endpoint above that looks into our Mysql DB to see if the email from there matches the one a User may have tried to register with \\
         private bool CustomersExists(long id)
