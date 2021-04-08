@@ -24,7 +24,7 @@ namespace RestAPI.Controllers
 
         // GET: api/Customers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Intervention>>> GetCustomers()
+        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
         {
             return await _context.customers.ToListAsync();
         }
