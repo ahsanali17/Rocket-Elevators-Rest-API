@@ -2,7 +2,7 @@ using System;
 public class Customer
 {
     public long id { get; set; }
-    public string customers_creation_date { get; set; }
+    public DateTime? customers_creation_date { get; set; }
     public string company_name { get; set; }
     public string full_name_of_company_contact { get; set; }
     public string company_contact_phone { get; set; }
