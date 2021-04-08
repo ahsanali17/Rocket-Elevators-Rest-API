@@ -32,24 +32,24 @@ namespace RestAPI.Controllers
         //-----------------------------------  -----------------------------------\\
 
         // GET: api/Customer/id
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Customer>> GetCustomer(long id)
-        {
-            var customers = await _context.customers.FindAsync(id);
+        // [HttpGet("{id}")]
+        // public async Task<ActionResult<Customer>> GetCustomer(long id)
+        // {
+        //     var customers = await _context.customers.FindAsync(id);
 
-            if (customers == null)
-            {
-                return NotFound();
-            }
+        //     if (customers == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            return customers;
-        }
+        //     return customers;
+        // }
         
         //----------------------------------- Matching Users portal-email with Mysql-email -----------------------------------\\
 
         // GET: api/Customers/1/email
         [HttpGet("{email}")]
-        public async Task<ActionResult<bool>> CheckCustomers(string email)
+        public async Task<ActionResult<bool>> GetCustomer(string email)
         {
            var customers = await _context.customers.Where(customer => customer.email_of_company_contact == email).ToListAsync();
             if(!CustomersExists(email))
