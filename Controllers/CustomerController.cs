@@ -47,18 +47,22 @@ namespace RestAPI.Controllers
         
         //----------------------------------- Matching Users portal-email with Mysql-email -----------------------------------\\
 
-        // GET: api/Customers
-        [HttpGet("customer")]
-        public async Task<ActionResult<IEnumerable<Customer>>> CheckCustomers(string email)
+        // GET: api/Customers/1/email
+        [HttpGet("{email}")]
+        public async Task<ActionResult<bool>> CheckCustomers(string email)
         {
            var customers = await _context.customers.Where(customer => customer.email_of_company_contact == email).ToListAsync();
-            return customers;
+            if(!CustomersExists(email))
+            {
+                return false;
+            }
+            return true;
         }
 
         // We will add the endpoint above that looks into our Mysql DB to see if the email from there matches the one a User may have tried to register with \\
-        private bool CustomersExists(long id)
+        private bool CustomersExists(string email)
         {
-            return _context.customers.Any(e => e.id == id);
+            return _context.customers.Any(e => e.email_of_company_contact == email);
         }
     }
 }
