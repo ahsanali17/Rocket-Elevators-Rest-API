@@ -48,7 +48,7 @@ namespace RestAPI.Controllers
         //----------------------------------- Matching Users portal-email with Mysql-email -----------------------------------\\
 
         // GET: api/Customers/1/email
-        [HttpGet("{email}")]
+        [HttpGet("getEmail/{email}")]
         public async Task<ActionResult<bool>> GetCustomer(string email)
         {
            var customers = await _context.customers.Where(customer => customer.email_of_company_contact == email).ToListAsync();
@@ -73,6 +73,23 @@ namespace RestAPI.Controllers
             }
 
             return building;
+        }
+
+        [HttpGet("{Email}")]
+            public async Task<ActionResult<List<Customer>>> GetBatteryStatus(string Email)
+            {
+            var Customers = await _context.customers
+                .Where(Customer => Customer.email_of_company_contact == Email)
+                .ToListAsync();
+
+
+
+            if (Customers == null)
+            {
+                return NotFound();
+            }
+
+            return Customers;
         }
 
          [HttpGet("{id}/battery")]
