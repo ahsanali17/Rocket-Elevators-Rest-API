@@ -21,19 +21,38 @@ namespace RestAPI.Controllers
             _context = context;
         }
 
+        //-----------------------------------------------------------------------------------------\\
+
+        //GET: api/Employees
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> CheckIfEmployee()
+        public async Task<ActionResult<IEnumerable<Employee>>> CheckIfEmployees()
         {
             return await _context.employees.ToListAsync();
         }
 
         //-----------------------------------------------------------------------------------------\\
 
-        // GET: api/Employees/valid/{email}
-        [HttpGet("{email}")]
-        public Boolean CheckIfEmployee(string email)
+        //GET: api/Employees/id
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Employee>> GetEmployees(long id)
         {
-            var employees = _context.employees.ToList();
+            var employees = await _context.employees.FindAsync(id);
+
+            if (employees == null)
+            {
+                return NotFound();
+            }
+
+            return employees;
+        }
+
+        //-----------------------------------------------------------------------------------------\\
+
+        // GET: api/Employees/valid/{email}
+        [HttpGet("valid/{email}")]
+        public async Task<ActionResult<bool>> CheckIfEmployees(string email)
+        {
+            var employees = await _context.employees.Where(employees => employees.email == email).ToListAsync();
             var isValid = false;
 
             foreach (Employee employee in employees)
@@ -49,7 +68,7 @@ namespace RestAPI.Controllers
 
 
 
-
+        //-----------------------------------------------------------------------------------------\\
 
         private bool EmployeesExists(string email)
         {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ahsan\\Rocket-Elevators-Rest-API\\RestAPI.csproj": {}
+    "C:\\Users\\Ahsan\\coding\\Rocket-Elevators-Rest-API\\RestAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ahsan\\Rocket-Elevators-Rest-API\\RestAPI.csproj": {
+    "C:\\Users\\Ahsan\\coding\\Rocket-Elevators-Rest-API\\RestAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ahsan\\Rocket-Elevators-Rest-API\\RestAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Ahsan\\coding\\Rocket-Elevators-Rest-API\\RestAPI.csproj",
         "projectName": "RestAPI",
-        "projectPath": "C:\\Users\\Ahsan\\Rocket-Elevators-Rest-API\\RestAPI.csproj",
+        "projectPath": "C:\\Users\\Ahsan\\coding\\Rocket-Elevators-Rest-API\\RestAPI.csproj",
         "packagesPath": "C:\\Users\\Ahsan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ahsan\\Rocket-Elevators-Rest-API\\obj\\",
+        "outputPath": "C:\\Users\\Ahsan\\coding\\Rocket-Elevators-Rest-API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
