@@ -32,9 +32,9 @@ namespace RestAPI
         {
 
             services.AddCors();
-                    
+
             // var databaseConnection = "databaseConnectionString";
-            
+
             // string value = ConfigurationManager.ConnectionStrings[databaseConnection].ConnectionString;
 
             services.AddDbContext<RestAPIContext>(options =>
@@ -80,6 +80,8 @@ namespace RestAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
