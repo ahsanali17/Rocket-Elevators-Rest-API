@@ -20,7 +20,7 @@ namespace RestAPI.Controllers
             _context = context;
         }
 
-//------------------- Retrieving a list of Elevators that are not in operation at the time of the request -------------------\\
+        //------------------- Retrieving a list of Elevators that are not in operation at the time of the request -------------------\\
 
         // GET: api/Elevators/NotActive
         [HttpGet("NotActive")]
@@ -28,11 +28,11 @@ namespace RestAPI.Controllers
         {
             return _context.elevators
                 .Where(elevator => elevator.status != "Active")
-                .Select(elevator => new {elevator.id, elevator.serial_number, elevator.status});
-            
+                .Select(elevator => new { elevator.id, elevator.serial_number, elevator.status });
+
         }
 
-//----------------------------------- Retrieving all information from a specific Elevator -----------------------------------\\
+        //----------------------------------- Retrieving all information from a specific Elevator -----------------------------------\\
 
         //GET: api/Elevators/id
         [HttpGet("{id}")]
@@ -48,7 +48,7 @@ namespace RestAPI.Controllers
             return elevator;
         }
 
-//----------------------------------- Retrieving the current status of a specific Elevator -----------------------------------\\
+        //----------------------------------- Retrieving the current status of a specific Elevator -----------------------------------\\
 
         // GET: api/Elevators/id/Status
         [HttpGet("{id}/Status")]
@@ -64,7 +64,7 @@ namespace RestAPI.Controllers
             return Content("The status of elevator " + elevator.id + " is: " + elevator.status);
         }
 
-//----------------------------------- Changing the status of a specific Elevator -----------------------------------\\
+        //----------------------------------- Changing the status of a specific Elevator -----------------------------------\\
 
         // PUT: api/Elevators/id/Status        
         [HttpPut("{id}/Status")]
@@ -74,7 +74,7 @@ namespace RestAPI.Controllers
             {
                 return BadRequest();
             }
-            
+
             if (elevator.status == "Active" || elevator.status == "Inactive" || elevator.status == "Intervention")
             {
                 Elevator elevatorFound = await _context.elevators.FindAsync(id);
@@ -98,9 +98,20 @@ namespace RestAPI.Controllers
                 }
             }
             return Content("Valid status: Intervention, Inactive, Active. Try again!  ");
-        }        
+        }
 
-        
+        //----------------------------------- Get All Elevators -----------------------------------\\
+
+
+        // GET: api/Elevators
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Elevator>>> GetAllElevators()
+        {
+            return await _context.elevators.ToListAsync();
+        }
+
+
+
         private bool ElevatorExists(long id)
         {
             return _context.elevators.Any(e => e.id == id);
