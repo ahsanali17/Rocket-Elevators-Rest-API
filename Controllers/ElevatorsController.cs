@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestAPI.Models;
@@ -23,6 +24,7 @@ namespace RestAPI.Controllers
         //------------------- Retrieving a list of Elevators that are not in operation at the time of the request -------------------\\
 
         // GET: api/Elevators/NotActive
+        [EnableCors]
         [HttpGet("NotActive")]
         public object GetElevators()
         {
@@ -35,6 +37,7 @@ namespace RestAPI.Controllers
         //----------------------------------- Retrieving all information from a specific Elevator -----------------------------------\\
 
         //GET: api/Elevators/id
+        [EnableCors]
         [HttpGet("{id}")]
         public async Task<ActionResult<Elevator>> GetElevator(long id)
         {
@@ -51,6 +54,7 @@ namespace RestAPI.Controllers
         //----------------------------------- Retrieving the current status of a specific Elevator -----------------------------------\\
 
         // GET: api/Elevators/id/Status
+        [EnableCors]
         [HttpGet("{id}/Status")]
         public async Task<ActionResult<Elevator>> GetColumnStatus([FromRoute] long id)
         {
@@ -66,7 +70,8 @@ namespace RestAPI.Controllers
 
         //----------------------------------- Changing the status of a specific Elevator -----------------------------------\\
 
-        // PUT: api/Elevators/id/Status        
+        // PUT: api/Elevators/id/Status   
+        [EnableCors]
         [HttpPut("{id}/Status")]
         public async Task<IActionResult> PutElevator([FromRoute] long id, Elevator elevator)
         {
@@ -104,6 +109,7 @@ namespace RestAPI.Controllers
 
 
         // GET: api/Elevators
+        [EnableCors]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Elevator>>> GetAllElevators()
         {
